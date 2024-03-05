@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Gameover from "./components/Gameover";
 import { requests } from "./lib/requests";
 import "./App.css";
 import random from "./lib/random";
@@ -8,6 +9,7 @@ function App() {
   const [isFetched, setIsFetched] = useState(false);
   const [visited, setVisited] = useState([]);
   const [score, setScore] = useState(0);
+  const [gameover, setGameover] = useState(false);
 
   useEffect(() => {
     if (isFetched) return;
@@ -32,9 +34,9 @@ function App() {
   function handleClick(e) {
     const index = parseInt(e.currentTarget.dataset["index"]);
     if (visited.includes(index)) {
-      setScore(0);
       setIsFetched(false);
       setVisited([]);
+      setGameover(true);
       return;
     }
     setVisited((prevArr) => [index, ...prevArr]);
@@ -48,6 +50,7 @@ function App() {
         <h1>S C O R E: {score}</h1>
       </div>
       {isFetched &&
+        !gameover &&
         images.map(({ image, title, index }) => (
           <div
             className='card'
@@ -70,6 +73,12 @@ function App() {
             </>
           </div>
         ))}
+      {gameover && (
+        <Gameover
+          setGameover={setGameover}
+          setScore={setScore}
+        />
+      )}
     </div>
   );
 }
