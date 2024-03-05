@@ -24,10 +24,6 @@ The game has three difficulty modes:
 
  The high score stored in local storage, so you can come back and try to beat your own high score!
 
-## Project Link
-
-You can check out the project here.
-
 ## Credits
 
 This project was inspired by The Odin Project. The dynamic card faces are generated using the Giphy API.
