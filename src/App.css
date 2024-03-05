@@ -1,0 +1,32 @@
+.app {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+img {
+    width: 100%;
+    min-height: 250px;
+    display: block;
+    border-radius: 10px;
+}
+
+.card {
+    text-align: center;
+    width: 300px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #fff;
+    background-color: #3e6623;
+    border: 1px solid lime;
+    border-radius: 10px;
+    margin-bottom: 1vmax;
+    padding: 1vmax;
+}
+
+.card:hover {
+    cursor: pointer;
+}
