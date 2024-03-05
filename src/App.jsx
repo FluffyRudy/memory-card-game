@@ -83,7 +83,13 @@ function App() {
     <div className='app'>
       <div className='score-modes full-width'>
         <div className='modes'>
-          <p style={{ textAlign: "center", fontSize: "x-large", margin: "0" }}>
+          <p
+            style={{
+              textAlign: "center",
+              fontSize: "x-large",
+              margin: "0",
+              fontWeight: "bolder",
+            }}>
             Modes:
           </p>
           <button
