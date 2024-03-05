@@ -1,8 +1,37 @@
-# React + Vite
+# Memory Card Game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the Memory Card Game! This game is a fun and challenging way to test your memory. It's built with JavaScript(React) and uses the Giphy API to generate dynamic card faces.
 
-Currently, two official plugins are available:
+## Game Categories
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The game includes the following categories:
+- Pokemon
+- Space
+- Meme
+- Funny
+- Linux
+- Programming Meme
+- Nature
+
+## Game Modes
+
+The game has three difficulty modes:
+- Easy: 5 cards
+- Normal: 10 cards
+- Hard: 15 cards
+
+## High Scores
+
+ The high score stored in local storage, so you can come back and try to beat your own high score!
+
+## Project Link
+
+You can check out the project here.
+
+## Credits
+
+This project was inspired by The Odin Project. The dynamic card faces are generated using the Giphy API.
+
+## Contributing
+
+This project is open for contributions. Feel free to fork the project and submit a pull request!
