@@ -129,7 +129,7 @@ function App() {
               {image && (
                 <>
                   <img
-                    loading='lazy-loading'
+                    loading='lazy'
                     src={image}
                     alt={title}
                   />
