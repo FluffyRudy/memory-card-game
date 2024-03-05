@@ -39,15 +39,24 @@ img {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    text-align: center;
 }
 
 .score-modes button {
     padding: 1vmax 1vmax;
     font-size: large;
+    font-weight: bolder;
+    border-radius: 10px;
+    border: none;
 }
 
 .score-modes button + button {
     margin-left: 0.5vmin;
+}
+
+.focus {
+    background-color: #fff;
+    color: #000;
 }
 
 .gameover {

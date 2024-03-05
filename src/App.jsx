@@ -6,7 +6,7 @@ import "./App.css";
 import random from "./lib/random";
 
 function App() {
-  const [mode, setMode] = useState("hard");
+  const [mode, setMode] = useState("easy");
   const [limit, setLimit] = useState(modes[mode]);
   const [images, setImages] = useState([]);
   const [isFetched, setIsFetched] = useState(false);
@@ -86,9 +86,21 @@ function App() {
           <p style={{ textAlign: "center", fontSize: "x-large", margin: "0" }}>
             Modes:
           </p>
-          <button onClick={() => setMode("easy")}>Easy</button>
-          <button onClick={() => setMode("normal")}>Medium</button>
-          <button onClick={() => setMode("hard")}>Hard</button>
+          <button
+            className={mode === "easy" ? "focus" : ""}
+            onClick={() => setMode("easy")}>
+            Easy
+          </button>
+          <button
+            className={mode === "normal" ? "focus" : ""}
+            onClick={() => setMode("normal")}>
+            Medium
+          </button>
+          <button
+            className={mode === "hard" ? "focus" : ""}
+            onClick={() => setMode("hard")}>
+            Hard
+          </button>
         </div>
         <div className='score'>
           <h1>S C O R E: {score}</h1>
