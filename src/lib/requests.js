@@ -2,8 +2,7 @@ import axios from "axios";
 import random from "./random";
 import cards from "./data";
 
-export async function requests() {
-    const limit = 25;
+export async function requests(limit=25) {
     const offsets = [0, 10, 20, 30, 40, 50, 60];
     const query = random.choice(cards);
     try {

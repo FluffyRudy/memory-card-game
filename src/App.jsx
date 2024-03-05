@@ -7,6 +7,7 @@ function App() {
   const [images, setImages] = useState([]);
   const [isFetched, setIsFetched] = useState(false);
   const [visited, setVisited] = useState([]);
+  const [score, setScore] = useState(0);
 
   useEffect(() => {
     if (isFetched) return;
@@ -14,7 +15,7 @@ function App() {
   }, [isFetched]);
 
   const fetchImages = async () => {
-    const response = await requests("naruto");
+    const response = await requests(15);
 
     if (response && response.status === 200) {
       const webpPreviews = response.data.data.map((imageInfo, index) => ({
@@ -31,33 +32,44 @@ function App() {
   function handleClick(e) {
     const index = parseInt(e.currentTarget.dataset["index"]);
     if (visited.includes(index)) {
-      alert("visited");
-      setImages((prevImage) => random.shuffle([...prevImage]));
+      setScore(0);
+      setIsFetched(false);
+      setVisited([]);
       return;
     }
     setVisited((prevArr) => [index, ...prevArr]);
     setImages((prevImage) => random.shuffle([...prevImage]));
+    setScore(score + 1);
   }
 
   return (
     <div className='app'>
-      {images.map(({ image, title, index }) => (
-        <div
-          className='card'
-          data-index={index}
-          key={image}
-          onClick={handleClick}>
-          {image && (
+      <div className='score'>
+        <h1>S C O R E: {score}</h1>
+      </div>
+      {isFetched &&
+        images.map(({ image, title, index }) => (
+          <div
+            className='card'
+            data-index={index}
+            key={image}
+            onClick={handleClick}>
             <>
-              <img
-                src={image}
-                alt={title}
-              />
-              <h2>{title.replace(/gif|undefined/gi, "")}</h2>
+              <div className='top-gradient-border'></div>
+              {image && (
+                <>
+                  <img
+                    loading='lazy-loading'
+                    src={image}
+                    alt={title}
+                  />
+                  <h2>{title.replace(/gif|undefined/gi, "")}</h2>
+                </>
+              )}
+              <div className='bottom-gradient-border'></div>
             </>
-          )}
-        </div>
-      ))}
+          </div>
+        ))}
     </div>
   );
 }

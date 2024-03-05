@@ -20,8 +20,8 @@ img {
     flex-direction: column;
     justify-content: space-between;
     color: #fff;
-    background-color: #3e6623;
-    border: 1px solid lime;
+    background-color: #000;
+    border: 1px solid grey;
     border-radius: 10px;
     margin-bottom: 1vmax;
     padding: 1vmax;
@@ -29,4 +29,9 @@ img {
 
 .card:hover {
     cursor: pointer;
+}
+
+.score {
+    width: 100%;
+    text-align: right;
 }
