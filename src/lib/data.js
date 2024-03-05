@@ -1,4 +1,4 @@
-const cards = [
+export const cards = [
     "pokemon",
     "space",
     "meme",
@@ -8,4 +8,8 @@ const cards = [
     "nature"
 ]
 
-export default cards;
+export const modes = {
+    "easy": 5,
+    "normal": 10,
+    "hard": 15
+}
