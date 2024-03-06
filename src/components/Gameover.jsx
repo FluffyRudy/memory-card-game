@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export default function Gameover({ setGameover, setScore }) {
   function handleGameover() {
     setScore(0);
@@ -10,3 +12,8 @@ export default function Gameover({ setGameover, setScore }) {
     </div>
   );
 }
+
+Gameover.propTypes = {
+  setGameover: PropTypes.func.isRequired,
+  setScore: PropTypes.func.isRequired,
+};
