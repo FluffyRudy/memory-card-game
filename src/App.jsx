@@ -19,14 +19,29 @@ function App() {
 
   useEffect(() => {
     if (isFetched) return;
+
+    const fetchImages = async () => {
+      const response = await requests(limit);
+
+      if (response && response.status === 200) {
+        const webpPreviews = response.data.data.map((imageInfo, index) => ({
+          title: imageInfo.title,
+          image: imageInfo.images.original.url,
+          index: index,
+        }));
+
+        setImages(webpPreviews);
+        setIsFetched(true);
+      }
+    };
     fetchImages();
-  }, [isFetched]);
+  }, [isFetched, limit]);
 
   useEffect(() => {
     if (visited.length < images.length) return;
     setIsFetched(false);
     setVisited([]);
-  }, [score]);
+  }, [score, images.length, visited.length]);
 
   useEffect(() => {
     setVisited([]);
@@ -34,21 +49,6 @@ function App() {
     setIsFetched(false);
     setLimit(modes[mode]);
   }, [mode]);
-
-  const fetchImages = async () => {
-    const response = await requests(limit);
-
-    if (response && response.status === 200) {
-      const webpPreviews = response.data.data.map((imageInfo, index) => ({
-        title: imageInfo.title,
-        image: imageInfo.images.original.url,
-        index: index,
-      }));
-
-      setImages(webpPreviews);
-      setIsFetched(true);
-    }
-  };
 
   function handleClick(e) {
     if (!isFetched) return;
