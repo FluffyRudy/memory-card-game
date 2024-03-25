@@ -20,6 +20,9 @@ The game has three difficulty modes:
 - Normal: 10 cards
 - Hard: 15 cards
 
+## How To Play
+ **Dont click on same card more than once, Try to remember what cards you clicked previously**
+
 ## High Scores
 
  The high score stored in local storage, so you can come back and try to beat your own high score!
