@@ -26,7 +26,7 @@ function App() {
       if (response && response.status === 200) {
         const webpPreviews = response.data.data.map((imageInfo, index) => ({
           title: imageInfo.title,
-          image: imageInfo.images.downsized_small.url,
+          image: imageInfo.images.original.url,
           index: index,
         }));
 
