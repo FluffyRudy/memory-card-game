@@ -5,7 +5,7 @@ const Instructions = ({ setShowInstructions }) => {
   const [isFirstVisit, setIsFirstVisit] = useState(false);
 
   useEffect(() => {
-    const hasSeenInstructions = localStorage.getItem("hasSeenInstructions");
+    const hasSeenInstructions = sessionStorage.getItem("hasSeenInstructions");
 
     if (!hasSeenInstructions) {
       setIsFirstVisit(true);
@@ -13,7 +13,7 @@ const Instructions = ({ setShowInstructions }) => {
   }, []);
 
   const handleGotIt = () => {
-    localStorage.setItem("hasSeenInstructions", "true");
+    sessionStorage.setItem("hasSeenInstructions", "true");
 
     setShowInstructions(false);
   };
