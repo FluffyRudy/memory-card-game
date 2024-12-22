@@ -4,6 +4,7 @@ import { modes } from "./lib/data";
 import { requests } from "./lib/requests";
 import "./App.css";
 import random from "./lib/random";
+import Instructions from "./components/Instruction";
 
 function App() {
   const [mode, setMode] = useState("easy");
@@ -16,6 +17,7 @@ function App() {
     Number(localStorage.getItem("highscore") ?? 0)
   );
   const [gameover, setGameover] = useState(false);
+  const [showInstructions, setShowInstructions] = useState(true);
 
   useEffect(() => {
     if (isFetched) return;
@@ -80,39 +82,47 @@ function App() {
   }
 
   return (
-    <div className='app'>
-      <div className='score-modes full-width'>
-        <div className='modes'>
+    <div className="app">
+      {showInstructions && (
+        <Instructions setShowInstructions={setShowInstructions} />
+      )}
+
+      <div className="score-modes full-width">
+        <div className="modes">
           <p
             style={{
               textAlign: "center",
               fontSize: "x-large",
               margin: "0",
               fontWeight: "bolder",
-            }}>
+            }}
+          >
             Modes:
           </p>
           <button
             className={mode === "easy" ? "focus" : ""}
-            onClick={() => setMode("easy")}>
+            onClick={() => setMode("easy")}
+          >
             Easy
           </button>
           <button
             className={mode === "normal" ? "focus" : ""}
-            onClick={() => setMode("normal")}>
+            onClick={() => setMode("normal")}
+          >
             Medium
           </button>
           <button
             className={mode === "hard" ? "focus" : ""}
-            onClick={() => setMode("hard")}>
+            onClick={() => setMode("hard")}
+          >
             Hard
           </button>
         </div>
-        <div className='score'>
+        <div className="score">
           <h1>S C O R E: {score}</h1>
           <h1>H I G H &nbsp;S C O R E: {highscore}</h1>
         </div>
-        <div className='reset-highscore'>
+        <div className="reset-highscore">
           <button onClick={resetHighscore}>Reset Highscore</button>
         </div>
       </div>
@@ -120,32 +130,24 @@ function App() {
         !gameover &&
         images.map(({ image, title, index }) => (
           <div
-            className='card'
+            className="card"
             data-index={index}
             key={image}
-            onClick={handleClick}>
+            onClick={handleClick}
+          >
             <>
-              <div className='top-gradient-border'></div>
+              <div className="top-gradient-border"></div>
               {image && (
                 <>
-                  <img
-                    loading='lazy'
-                    src={image}
-                    alt={title}
-                  />
+                  <img loading="lazy" src={image} alt={title} />
                   <h2>{title.replace(/gif|undefined/gi, "")}</h2>
                 </>
               )}
-              <div className='bottom-gradient-border'></div>
+              <div className="bottom-gradient-border"></div>
             </>
           </div>
         ))}
-      {gameover && (
-        <Gameover
-          setGameover={setGameover}
-          setScore={setScore}
-        />
-      )}
+      {gameover && <Gameover setGameover={setGameover} setScore={setScore} />}
     </div>
   );
 }
